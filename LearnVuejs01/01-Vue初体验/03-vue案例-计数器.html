@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h2>当前计数: {{counter}}</h2>
+    <!--<button v-on:click="counter++">+</button>-->
+    <!--<button v-on:click="counter--;">-</button>-->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+    <!--下面是语法糖写法-->
+    <!--<button @click="sub">-</button>-->
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    // 语法糖: 简写
+    // proxy
+    const obj = {
+        counter: 0,
+        message: 'abc'
+    }
+
+    new Vue()
+
+    const app = new Vue({
+        el: '#app',
+        data: obj,
+        methods: {
+            add: function () {
+                console.log('add被执行');
+                // this指的是当前对象
+                // 或者可以使用app.counter++
+                // 不加this，使用的就是全局变量
+                this.counter++
+            },
+            sub: function () {
+                console.log('sub被执行');
+                this.counter--
+            }
+        },
+        beforeCreate: function () {
+
+        },
+        created: function () {
+            console.log('created');
+        },
+        mounted: function () {
+            console.log('mounted');
+        }
+    })
+
+
+    // 以前命令式编程是这么做的
+    // 1.拿button元素
+
+    // 2.添加监听事件
+</script>
+
+</body>
+</html>
